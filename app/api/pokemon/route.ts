@@ -1,11 +1,15 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import pokedex from "../pokedex";
 import usePokemonResponse from "../transformer/usePokemonResponse";
 
-export async function GET() {
+export async function GET(
+  request: any,
+  context: { params: { offset: number } }
+) {
   const instance = await pokedex();
+  const queryParam = request.url;
   const { results } = await instance.getPokemonsList({
-    limit: 500,
+    limit: 40,
   });
 
   const pokeList = await Promise.all(

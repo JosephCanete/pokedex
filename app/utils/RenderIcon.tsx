@@ -20,11 +20,11 @@ import Image from "next/image";
 import { PokeType } from "../types/pokemon";
 import "./RenderIcon.css";
 
-export default function RenderIcon({ type }: { type: string }) {
+export default function RenderIcon({ type }: { type: string[] }) {
   let icon;
   let style;
 
-  switch (type) {
+  switch (type[0]) {
     case "grass":
       icon = grassIcon;
       style = "grass";

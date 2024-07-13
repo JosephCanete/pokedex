@@ -8,17 +8,16 @@ export type PokeCardProps = {
   id: string;
   name: string;
   url: string;
-  types: PokeType[];
+  types: string[];
 };
 
 export default function PokeCard({ id, name, url, types }: PokeCardProps) {
-  console.log({ types });
   return (
-    <div className="flex flex-col max-w-[200px] gap-y-2 items-center border border-black-100 rounded">
+    <div className="flex flex-col max-w-[150px] lg:max-w-[200px] gap-y-2 items-center border border-black-100 rounded">
       <Link href={`/pokemon/${id}`}>
         <Image src={url} alt="pokemon" width={200} height={200} />
       </Link>
-      <PokeId id={id} name={name} type={types} />
+      <PokeId id={id} name={name} types={types} />
     </div>
   );
 }

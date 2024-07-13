@@ -13,7 +13,7 @@ export type PokeReturnType = {
   base_experience: number;
   url: string;
   gif: string;
-  types: PokeType[];
+  types: string[];
 }[];
 export default function usePokemonResponse(data: Pokemon[]): PokeReturnType {
   return data.map((pokemon) => {
@@ -24,7 +24,7 @@ export default function usePokemonResponse(data: Pokemon[]): PokeReturnType {
       base_experience: pokemon.base_experience,
       url: pokemon.sprites.other["official-artwork"].front_shiny,
       gif: pokemon.sprites.other["showdown"].front_default,
-      types: pokemon.types.map((item) => item.type.name) as PokeType[],
+      types: pokemon.types.map((type) => type.type.name),
     };
   });
 }
