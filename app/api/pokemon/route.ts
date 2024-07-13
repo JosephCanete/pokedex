@@ -9,7 +9,7 @@ export async function GET(
   const instance = await pokedex();
   const queryParam = request.url;
   const { results } = await instance.getPokemonsList({
-    limit: 500,
+    limit: 700,
   });
 
   const pokeList = await Promise.all(
