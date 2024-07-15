@@ -18,7 +18,7 @@ export type PokeType =
   | "steel"
   | "fairy";
 
-type Pokemon = {
+export type Pokemon = {
   id: string;
   name: string;
   weight: number;

@@ -17,14 +17,13 @@ import fairyIcon from "../assets/type/fairy.svg";
 import steelIcon from "../assets/type/steel.svg";
 import darkIcon from "../assets/type/dark.svg";
 import Image from "next/image";
-import { PokeType } from "../types/pokemon";
 import "./RenderIcon.css";
 
-export default function RenderIcon({ type }: { type: string[] }) {
+export default function RenderIcon({ types }: { types: string[] }) {
   let icon;
   let style;
 
-  switch (type[0]) {
+  switch (types[0]) {
     case "grass":
       icon = grassIcon;
       style = "grass";
@@ -104,7 +103,7 @@ export default function RenderIcon({ type }: { type: string[] }) {
 
   return (
     <div className={`icon ${style}`}>
-      <Image src={icon || normalIcon} alt={type[0]} width={12} />
+      <Image src={icon || normalIcon} alt={types[0]} width={12} />
     </div>
   );
 }

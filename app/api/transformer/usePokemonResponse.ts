@@ -6,7 +6,7 @@ import { Pokemon, PokeType } from "@/app/types/pokemon";
  *
  */
 
-export type PokeReturnType = {
+export type ProcessedPokeResponse = {
   id: string;
   name: string;
   weight: number;
@@ -14,8 +14,11 @@ export type PokeReturnType = {
   url: string;
   gif: string;
   types: string[];
-}[];
-export default function usePokemonResponse(data: Pokemon[]): PokeReturnType {
+};
+
+export default function usePokemonResponse(
+  data: Pokemon[]
+): ProcessedPokeResponse[] {
   return data.map((pokemon) => {
     return {
       id: pokemon.id,
@@ -24,7 +27,7 @@ export default function usePokemonResponse(data: Pokemon[]): PokeReturnType {
       base_experience: pokemon.base_experience,
       url: pokemon.sprites.other["official-artwork"].front_shiny,
       gif: pokemon.sprites.other["showdown"].front_default,
-      types: pokemon.types.map((type) => type.type.name),
+      types: pokemon.types.map((type) => type.type.name as PokeType),
     };
   });
 }

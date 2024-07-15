@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import PokeId from "../Label/PokeId";
 import Link from "next/link";
-import { PokeType } from "@/app/types/pokemon";
+import { ProcessedPokeResponse } from "@/app/api/transformer/usePokemonResponse";
 
 export type PokeCardProps = {
   id: string;

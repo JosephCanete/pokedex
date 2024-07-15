@@ -7,9 +7,11 @@ export async function GET(
   context: { params: { offset: number } }
 ) {
   const instance = await pokedex();
-  const queryParam = request.url;
+  const queryParam = request?.url?.split("?")[1];
+  const offset = queryParam?.split("=")[1];
   const { results } = await instance.getPokemonsList({
-    limit: 700,
+    limit: 50,
+    offset: offset ?? 0,
   });
 
   const pokeList = await Promise.all(
