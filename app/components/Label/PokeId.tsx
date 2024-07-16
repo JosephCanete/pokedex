@@ -1,6 +1,4 @@
-import { Pokemon } from "@/app/types/pokemon";
 import RenderIcon from "@/app/utils/RenderIcon";
-import { type ProcessedPokeResponse } from "@/app/api/transformer/usePokemonResponse";
 
 export type PokeIdProps = {
   id: string;
