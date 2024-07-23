@@ -56,7 +56,5 @@ export default function LoadMore({ initLoadMore }: useLoadMoreProps) {
     }
   }, [isLoadingPromise]);
 
-  return isLoadingVisible ? (
-    <Image className="" width={400} src={LoadingGif} alt="Loading" />
-  ) : null;
+  return isLoadingVisible ? <></> : null;
 }

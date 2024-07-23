@@ -27,13 +27,14 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-wrap justify-center lg:justify-normal gap-4 mx-4">
-      {!isLoading &&
-        [...pokemon, ...moreData].map((item) => (
-          <PokeCard key={`${item.name}-${item.id}`} {...item} />
-        ))}
-
+    <>
+      <div className="flex flex-wrap justify-center lg:justify-center gap-4 mx-4">
+        {!isLoading &&
+          [...pokemon, ...moreData].map((item) => (
+            <PokeCard key={`${item.name}-${item.id}`} {...item} />
+          ))}
+      </div>
       <LoadMore initLoadMore={handleLoadMore} />
-    </div>
+    </>
   );
 }

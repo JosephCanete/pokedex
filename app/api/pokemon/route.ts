@@ -10,7 +10,7 @@ export async function GET(
   const queryParam = request?.url?.split("?")[1];
   const offset = queryParam?.split("=")[1];
   const { results } = await instance.getPokemonsList({
-    limit: 50,
+    limit: 100,
     offset: offset ?? 0,
   });
 
