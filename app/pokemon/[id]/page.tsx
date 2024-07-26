@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import RenderIcon from "@/app/utils/RenderIcon";
+import Loading from "@/app/components/Loading/Loading";
 
 export default function PokemonDetails() {
   const pathname = usePathname() as string;
@@ -21,23 +22,22 @@ export default function PokemonDetails() {
 
   return (
     <div className="h-screen">
-      <button
-        onClick={() => router.push("/")}
-        type="button"
-        className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-white-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-      >
-        Back
-      </button>
-
-      <div className="flex flex-col items-center justify-center my-auto h-full w-full">
+      <div className="flex flex-col items-center justify-center my-auto h-full w-full text-white-100">
         {isLoading ? (
-          <div>Loading...</div>
+          <Loading loading={isLoading} />
         ) : (
           <>
+            <button
+              onClick={() => router.push("/")}
+              type="button"
+              className="text-white-100 py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-white-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Back
+            </button>
             <h1 className="capitalize text-4xl">{pokemon[0].name}</h1>
             <Image
               unoptimized
-              src={pokemon[0].gif}
+              src={pokemon[0].url}
               alt={pokemon[0].name}
               width={500}
               height={500}

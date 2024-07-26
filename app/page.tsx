@@ -4,10 +4,11 @@ import useSWR from "swr";
 import PokeCard from "./components/Card/PokeCard";
 import fetcher from "./utils/fetcher";
 import { useState } from "react";
-import { type Pokemon } from "./types/pokemon";
 import axios from "axios";
 import { type ProcessedPokeResponse } from "./api/transformer/usePokemonResponse";
 import LoadMore from "./utils/LoadMore";
+import Header from "./components/Header/Header";
+import Loading from "./components/Loading/Loading";
 
 export default function Home() {
   const { data: pokemon, isLoading } = useSWR("/api/pokemon", fetcher) as {
@@ -26,8 +27,11 @@ export default function Home() {
     console.log(offset);
   };
 
-  return (
-    <>
+  return isLoading ? (
+    <Loading loading={isLoading} />
+  ) : (
+    <div className="flex flex-col">
+      <Header />
       <div className="flex flex-wrap justify-center lg:justify-center gap-4 mx-4">
         {!isLoading &&
           [...pokemon, ...moreData].map((item) => (
@@ -35,6 +39,6 @@ export default function Home() {
           ))}
       </div>
       <LoadMore initLoadMore={handleLoadMore} />
-    </>
+    </div>
   );
 }

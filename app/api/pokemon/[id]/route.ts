@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import axios from "axios";
 import usePokemonResponse from "../../transformer/usePokemonResponse";
 
 export async function GET(_: NextRequest, context: { params: { id: string } }) {
