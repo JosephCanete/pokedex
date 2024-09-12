@@ -57,7 +57,7 @@ export async function GET(request: any) {
       const image = $("img").first().attr("src");
       return {
         title: item.title,
-        description: item.description,
+        description: item.description.replace(/<\/?p[^>]*>/gi, "").trim(),
         published: item.pubDate,
         urlPath: item.link,
         category: item.link.split("/")[3],
