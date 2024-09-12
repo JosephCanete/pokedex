@@ -12,6 +12,14 @@ export async function GET(request: any) {
     link: string;
   };
 
+  type RssType = {
+    rss: {
+      channel: {
+        item: Item[];
+      };
+    };
+  };
+
   const limit = pLimit(10);
 
   const baseUrl = (section: string) =>
@@ -37,8 +45,10 @@ export async function GET(request: any) {
     })
   );
 
-  const items = fetchAll.flatMap((rss) => rss.rss.channel.item);
-  const fetchAndParseItem = async (item) => {
+  const items = fetchAll.flatMap(
+    (rss: unknown) => (rss as RssType).rss.channel.item
+  );
+  const fetchAndParseItem = async (item: Item) => {
     try {
       if (!item.link) return null;
       const response = await axios.get(item.link);
