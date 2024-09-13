@@ -81,5 +81,5 @@ export async function GET(request: any) {
   const finalResponse = await buildResponse(items);
   console.log(finalResponse);
 
-  return NextResponse.json({ data: finalResponse });
+  return NextResponse.json({ data: finalResponse.slice(0, 10) });
 }
